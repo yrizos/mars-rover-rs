@@ -95,17 +95,17 @@ mod tests {
         assert_eq!(rover.x, 0);
         assert_eq!(rover.y, 1);
 
-        rover.direction = Direction::E;
+        rover.turn_right();
         rover.move_forward();
         assert_eq!(rover.x, 1);
         assert_eq!(rover.y, 1);
 
-        rover.direction = Direction::S;
+        rover.turn_right();
         rover.move_forward();
         assert_eq!(rover.x, 1);
         assert_eq!(rover.y, 0);
 
-        rover.direction = Direction::W;
+        rover.turn_right();
         rover.move_forward();
         assert_eq!(rover.x, 0);
         assert_eq!(rover.y, 0);
@@ -115,13 +115,51 @@ mod tests {
     fn test_move_forward_within_bounds() {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(5, 5, Direction::N, &plateau);
+
         rover.move_forward();
         assert_eq!(rover.x, 5);
         assert_eq!(rover.y, 5);
 
-        rover.direction = Direction::E;
+        rover.turn_right();
         rover.move_forward();
         assert_eq!(rover.x, 5);
         assert_eq!(rover.y, 5);
+    }
+
+    #[test]
+    fn test_move_forward_out_of_bounds() {
+        let plateau = Plateau::new(5, 5);
+        let mut rover = Rover::new(5, 5, Direction::N, &plateau);
+
+        rover.move_forward();
+        assert_eq!(rover.x, 5);
+        assert_eq!(rover.y, 5);
+
+        rover.turn_right();
+        rover.move_forward();
+        assert_eq!(rover.x, 5);
+        assert_eq!(rover.y, 5);
+
+        rover.turn_right();
+        rover.move_forward();
+        assert_eq!(rover.x, 5);
+        assert_eq!(rover.y, 4);
+
+        rover.turn_right();
+        rover.move_forward();
+        assert_eq!(rover.x, 4);
+        assert_eq!(rover.y, 4);
+
+        rover.move_forward();
+        rover.move_forward();
+        rover.move_forward();
+        rover.move_forward();
+        rover.move_forward();
+        assert_eq!(rover.x, 0);
+        assert_eq!(rover.y, 4);
+
+        rover.move_forward();
+        assert_eq!(rover.x, 0);
+        assert_eq!(rover.y, 4);
     }
 }
