@@ -87,13 +87,13 @@ mod tests {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(0, 0, Direction::NORTH, &plateau);
         rover.turn_left();
-        assert_eq!(rover.direction, Direction::WEST);
+        assert_eq!(rover.direction(), &Direction::WEST);
         rover.turn_left();
-        assert_eq!(rover.direction, Direction::SOUTH);
+        assert_eq!(rover.direction(), &Direction::SOUTH);
         rover.turn_left();
-        assert_eq!(rover.direction, Direction::EAST);
+        assert_eq!(rover.direction(), &Direction::EAST);
         rover.turn_left();
-        assert_eq!(rover.direction, Direction::NORTH);
+        assert_eq!(rover.direction(), &Direction::NORTH);
     }
 
     #[test]
@@ -101,13 +101,13 @@ mod tests {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(0, 0, Direction::NORTH, &plateau);
         rover.turn_right();
-        assert_eq!(rover.direction, Direction::EAST);
+        assert_eq!(rover.direction(), &Direction::EAST);
         rover.turn_right();
-        assert_eq!(rover.direction, Direction::SOUTH);
+        assert_eq!(rover.direction(), &Direction::SOUTH);
         rover.turn_right();
-        assert_eq!(rover.direction, Direction::WEST);
+        assert_eq!(rover.direction(), &Direction::WEST);
         rover.turn_right();
-        assert_eq!(rover.direction, Direction::NORTH);
+        assert_eq!(rover.direction(), &Direction::NORTH);
     }
 
     #[test]
@@ -115,23 +115,23 @@ mod tests {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(0, 0, Direction::NORTH, &plateau);
         rover.move_forward();
-        assert_eq!(rover.x, 0);
-        assert_eq!(rover.y, 1);
+        assert_eq!(rover.x(), 0);
+        assert_eq!(rover.y(), 1);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 1);
-        assert_eq!(rover.y, 1);
+        assert_eq!(rover.x(), 1);
+        assert_eq!(rover.y(), 1);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 1);
-        assert_eq!(rover.y, 0);
+        assert_eq!(rover.x(), 1);
+        assert_eq!(rover.y(), 0);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 0);
-        assert_eq!(rover.y, 0);
+        assert_eq!(rover.x(), 0);
+        assert_eq!(rover.y(), 0);
     }
 
     #[test]
@@ -139,13 +139,13 @@ mod tests {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(5, 5, Direction::NORTH, &plateau);
         rover.move_forward();
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 5);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 5);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 5);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 5);
     }
 
     #[test]
@@ -153,35 +153,35 @@ mod tests {
         let plateau = Plateau::new(5, 5);
         let mut rover = Rover::new(5, 5, Direction::NORTH, &plateau);
         rover.move_forward();
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 5);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 5);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 5);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 5);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 4);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 4);
 
         rover.turn_right();
         rover.move_forward();
-        assert_eq!(rover.x, 4);
-        assert_eq!(rover.y, 4);
+        assert_eq!(rover.x(), 4);
+        assert_eq!(rover.y(), 4);
 
         rover.move_forward();
         rover.move_forward();
         rover.move_forward();
         rover.move_forward();
         rover.move_forward();
-        assert_eq!(rover.x, 0);
-        assert_eq!(rover.y, 4);
+        assert_eq!(rover.x(), 0);
+        assert_eq!(rover.y(), 4);
 
         rover.move_forward();
-        assert_eq!(rover.x, 0);
-        assert_eq!(rover.y, 4);
+        assert_eq!(rover.x(), 0);
+        assert_eq!(rover.y(), 4);
     }
 
     #[test]
@@ -200,9 +200,9 @@ mod tests {
             Instruction::MOVE,
         ];
         rover.execute_instructions(&instructions);
-        assert_eq!(rover.x, 1);
-        assert_eq!(rover.y, 3);
-        assert_eq!(rover.direction, Direction::NORTH);
+        assert_eq!(rover.x(), 1);
+        assert_eq!(rover.y(), 3);
+        assert_eq!(rover.direction(), &Direction::NORTH);
 
         let mut rover = Rover::new(3, 3, Direction::EAST, &plateau);
         let instructions = [
@@ -218,9 +218,9 @@ mod tests {
             Instruction::MOVE,
         ];
         rover.execute_instructions(&instructions);
-        assert_eq!(rover.x, 5);
-        assert_eq!(rover.y, 1);
-        assert_eq!(rover.direction, Direction::EAST);
+        assert_eq!(rover.x(), 5);
+        assert_eq!(rover.y(), 1);
+        assert_eq!(rover.direction(), &Direction::EAST);
     }
 
     #[test]
