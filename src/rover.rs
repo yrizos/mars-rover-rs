@@ -1,4 +1,5 @@
 use crate::direction::Direction;
+use crate::instruction::Instruction;
 use crate::plateau::Plateau;
 
 #[derive(Debug, PartialEq)]
@@ -48,6 +49,16 @@ impl<'a> Rover<'a> {
         if self.plateau.is_within_bounds(new_x, new_y) {
             self.x = new_x;
             self.y = new_y;
+        }
+    }
+
+    pub fn execute_instructions(&mut self, instructions: &[Instruction]) {
+        for &instruction in instructions {
+            match instruction {
+                Instruction::LEFT => self.turn_left(),
+                Instruction::RIGHT => self.turn_right(),
+                Instruction::MOVE => self.move_forward(),
+            }
         }
     }
 }
@@ -161,5 +172,44 @@ mod tests {
         rover.move_forward();
         assert_eq!(rover.x, 0);
         assert_eq!(rover.y, 4);
+    }
+
+    #[test]
+    fn test_execute_instructions() {
+        let plateau = Plateau::new(5, 5);
+        let mut rover = Rover::new(1, 2, Direction::N, &plateau);
+        let instructions = [
+            Instruction::LEFT,
+            Instruction::MOVE,
+            Instruction::LEFT,
+            Instruction::MOVE,
+            Instruction::LEFT,
+            Instruction::MOVE,
+            Instruction::LEFT,
+            Instruction::MOVE,
+            Instruction::MOVE,
+        ];
+        rover.execute_instructions(&instructions);
+        assert_eq!(rover.x, 1);
+        assert_eq!(rover.y, 3);
+        assert_eq!(rover.direction, Direction::N);
+
+        let mut rover = Rover::new(3, 3, Direction::E, &plateau);
+        let instructions = [
+            Instruction::MOVE,
+            Instruction::MOVE,
+            Instruction::RIGHT,
+            Instruction::MOVE,
+            Instruction::MOVE,
+            Instruction::RIGHT,
+            Instruction::MOVE,
+            Instruction::RIGHT,
+            Instruction::RIGHT,
+            Instruction::MOVE,
+        ];
+        rover.execute_instructions(&instructions);
+        assert_eq!(rover.x, 5);
+        assert_eq!(rover.y, 1);
+        assert_eq!(rover.direction, Direction::E);
     }
 }
