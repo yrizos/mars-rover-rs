@@ -61,6 +61,18 @@ impl<'a> Rover<'a> {
             }
         }
     }
+
+    pub fn x(&self) -> i32 {
+        self.x
+    }
+
+    pub fn y(&self) -> i32 {
+        self.y
+    }
+
+    pub fn direction(&self) -> &Direction {
+        &self.direction
+    }
 }
 
 #[cfg(test)]
@@ -209,5 +221,15 @@ mod tests {
         assert_eq!(rover.x, 5);
         assert_eq!(rover.y, 1);
         assert_eq!(rover.direction, Direction::EAST);
+    }
+
+    #[test]
+    fn test_getters() {
+        let plateau = Plateau::new(5, 5);
+        let rover = Rover::new(1, 2, Direction::NORTH, &plateau);
+
+        assert_eq!(rover.x(), 1);
+        assert_eq!(rover.y(), 2);
+        assert_eq!(rover.direction(), &Direction::NORTH);
     }
 }
