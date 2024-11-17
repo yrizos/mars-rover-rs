@@ -42,5 +42,10 @@ fn main() {
 
     rover.execute_instructions(&instructions);
 
-    println!("{} {} {:?}", rover.x(), rover.y(), rover.direction());
+    println!(
+        "{} {} {}",
+        rover.x(),
+        rover.y(),
+        rover.direction().as_char()
+    );
 }
