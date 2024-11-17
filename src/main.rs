@@ -41,4 +41,6 @@ fn main() {
     let mut rover = Rover::new(x, y, direction, &plateau);
 
     rover.execute_instructions(&instructions);
+
+    println!("{} {} {:?}", rover.x(), rover.y(), rover.direction());
 }
