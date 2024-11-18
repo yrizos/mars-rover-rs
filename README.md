@@ -18,47 +18,49 @@ Rust and Cargo need to be installed on your system. You can install Rust and Car
 
 If you are on a Mac you may also [install Rust via Homebrew](https://dev.to/yrizos/installing-rust-on-macos-with-homebrew-51fk).
 
-### Running the program
+### Running the Program
 
-1. **Clone the Repository**
+1. **Clone the Repository:**
 
     ```sh
     git clone git@github.com:yrizos/mars-rover-rs.git
     cd mars-rover-rs
     ```
 
-2. **Build the program**
+2. **Build the Program:**
 
     ```sh
     cargo build
     ```
 
-3. **Run the program**
+3. **Run the Program:**
 
     ```
     cargo run
     ```
 
-When prompted, provide the input for the plateau dimensions and multiple rovers. For example:
+4. **Provide Input:** When prompted, provide the input for the plateau dimensions and multiple rovers. For example:
 
-```plaintext
-5 5
-1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
-```
+    ```plaintext
+    5 5
+    1 2 N
+    LMLMLMLMM
+    3 3 E
+    MMRMMRMRRM
+    ```
 
-After providing the input, you need to signal the end of input so that the program knows you are done. On Unix-like systems (Linux, macOS), you can do this by pressing `Ctrl+D`.
+    After providing the input, you need to signal the end of input so that the program knows you are done. On Unix-like systems (Linux, macOS), you can do this by pressing `Ctrl+D`.
 
-The program will output the final state of each rover. For the provided input, the expected output is:
+5. **Expected Output:**
 
-```plaintext
-1 3 N
-5 1 E
-```
+    The program will output the final state of each rover. For the provided input, the expected output is:
 
-### Running the tests
+    ```plaintext
+    1 3 N
+    5 1 E
+    ```
+
+### Running the Tests
 
 Unit tests can be found in the source files, while integration tests are located in the `tests` directory.
 
@@ -67,3 +69,17 @@ Both types of tests can be run with:
 ```sh
 cargo test
 ```
+
+### Running with Docker
+
+1. **Build the Docker Image:**
+
+    ```sh
+    docker build -t mars-rover-challenge .
+    ```
+
+2. **Run the Docker Container:**
+
+    ```sh
+    docker run -it mars-rover-challenge
+    ```
