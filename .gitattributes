@@ -1,0 +1,20 @@
+* text=auto
+
+*.rs text
+*.toml text
+*.md text
+*.sh text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.tgz binary
+*.bz2 binary
+
+Cargo.lock text
