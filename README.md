@@ -75,11 +75,11 @@ cargo test
 1. **Build the Docker Image:**
 
     ```sh
-    docker build -t mars-rover-challenge .
+    docker build -t mars-rover-rs .
     ```
 
 2. **Run the Docker Container:**
 
     ```sh
-    docker run -it mars-rover-challenge
+    docker run -it mars-rover-rs
     ```
