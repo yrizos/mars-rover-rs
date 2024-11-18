@@ -1,5 +1,5 @@
 [package]
-name = "mars-rover-rust"
+name = "mars-rover-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["Yannis Rizos <yrizos@gmail.com>"]
