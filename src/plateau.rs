@@ -1,4 +1,3 @@
-// plateau.rs
 #[derive(Debug, PartialEq)]
 pub struct Plateau {
     width: i32,
